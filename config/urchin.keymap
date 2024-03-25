@@ -32,25 +32,25 @@
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&kp PLUS>, <&kp MINUS>;
         };
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&kp ASTRK>, <&kp FSLH>;
         };
         td_QWERTY: tap_dance_QWERTY {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <1000>;
             bindings = <&none>, <&none>, <&none>, <&none>, <&to QWERTY>;
         };
         td_SET: tap_dance_SET {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <1000>;
             bindings = <&none>, <&none>, <&none>, <&none>, <&to SET>;
         };
     };
@@ -124,7 +124,7 @@
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ 5x Layer │Media prev│Media play│Media next│ BRI INC  │   │ PAGE UP  │ HOME     │ UP       │ END      │  BSPC    │
-           &td_QWERTY  &kp C_PREV &kp C_PP   &kp C_NEXT &kp C_BRI_UP   &kp PG_UP  &kp HOME   &trans     &kp END    &kp BSPC
+           &td_QWERTY  &kp C_PREV &kp C_PP   &kp C_NEXT &kp C_BRI_UP   &kp PG_UP  &kp HOME   &kp UARW   &kp END    &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │ VOL DOWN │ VOL MUTE │ VOL UP   │ BRI DEC  │   │ PAGE DN  │ LEFT     │ DOWN     │ RIGHT    │ DELETE   │
             &none    &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_BRI_DN &kp PG_DN  &kp LARW   &kp DARW   &kp RARW   &kp DEL
