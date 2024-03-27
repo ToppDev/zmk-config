@@ -29,18 +29,6 @@
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
         };
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings = <&kp PLUS>, <&kp MINUS>;
-        };
-        td1: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings = <&kp ASTRK>, <&kp FSLH>;
-        };
         td_QWERTY: tap_dance_QWERTY {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -113,7 +101,7 @@
             HRML(N1,       N2,        N3,        N4)    &kp N5         &kp N6     HRMR(N7,       N8,        N9,        N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │  :       │  +  -    │  *  /    │  .       │  =       │
-            &kp F10    &kp F11    &kp F12    &none      &none          &kp COLON  &td0       &td1       &kp DOT    &kp EQUAL
+            &kp F10    &kp F11    &kp F12    &none      &none        &kp COLON  &ht PLUS MINUS &ht ASTRK FSLH &kp DOT &kp EQUAL
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
                                   &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
