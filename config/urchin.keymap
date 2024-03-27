@@ -53,6 +53,26 @@
                 , <&macro_release &kp RALT>
                 ;
         };
+        web_next: web_next {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp TAB>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        web_prev: web_prev {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_press &kp LSHFT>
+                , <&macro_tap &kp TAB>
+                , <&macro_release &kp LSHFT>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
     };
 
     keymap {
@@ -117,8 +137,8 @@
         //│          │ VOL DOWN │ VOL MUTE │ VOL UP   │ BRI DEC  │   │ PAGE DN  │ LEFT     │ DOWN     │ RIGHT    │ DELETE   │
             &none    &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_BRI_DN &kp PG_DN  &kp LARW   &kp DARW   &kp RARW   &kp DEL
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ 5x Layer │          │          │          │          │   │SCROLL LCK│ PRINT SC │ PAUSE    │ INSERT   │ CAPS     │
-            &td_SET    &none      &none      &none      &none          &kp SLCK   &kp PSCRN  &kp PAUSE_BREAK  &kp INS  &caps_word
+        //│ 5x Layer │          │ Prev Tab │ Next Tab │          │   │SCROLL LCK│ PRINT SC │ PAUSE    │ INSERT   │ CAPS     │
+            &td_SET    &none      &web_prev  &web_next  &none          &kp SLCK   &kp PSCRN  &kp PAUSE_BREAK  &kp INS  &caps_word
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
                                   &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
@@ -154,7 +174,7 @@
         //│          │          │          │          │ CLEAR BT │   │          │          │          │          │          │
             &none      &none      &none      &none     &bt BT_CLR      &none      &none      &none      &none      &none
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
-                                  &lt SYM SPACE    &ht LGUI ENTER      &none           &to BASE
+                                  &none            &none               &none           &to BASE
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
