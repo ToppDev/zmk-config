@@ -10,8 +10,7 @@
 #define SYM 1
 #define NUM 2
 #define NAV 3
-#define QWERTY 4
-#define SET 5
+#define SET 4
 // -----------------
 
 // Home row mods macro
@@ -28,12 +27,6 @@
             quick-tap-ms = <150>;
             require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
-        };
-        td_QWERTY: tap_dance_QWERTY {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <1000>;
-            bindings = <&none>, <&none>, <&none>, <&none>, <&to QWERTY>;
         };
         td_SET: tap_dance_SET {
             compatible = "zmk,behavior-tap-dance";
@@ -53,6 +46,24 @@
                 , <&macro_release &kp RALT>
                 ;
         };
+        web_fwd: web_fwd {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp RARW>
+                , <&macro_release &kp LALT>
+                ;
+        };
+        web_bck: web_bck {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp LARW>
+                , <&macro_release &kp LALT>
+                ;
+        };
         web_next: web_next {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -70,6 +81,15 @@
                 , <&macro_press &kp LSHFT>
                 , <&macro_tap &kp TAB>
                 , <&macro_release &kp LSHFT>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+        web_addr: web_addr {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp L>
                 , <&macro_release &kp LCTRL>
                 ;
         };
@@ -120,8 +140,8 @@
         //│  1       │  2       │  3       │  4       │  5       │   │  6       │  7       │  8       │  9       │  0       │
             HRML(N1,       N2,        N3,        N4)    &kp N5         &kp N6     HRMR(N7,       N8,        N9,        N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │  :       │  +  -    │  *  /    │  .       │  =       │
-            &kp F10    &kp F11    &kp F12    &none      &none        &kp COLON  &ht MINUS PLUS &ht FSLH ASTRK &kp DOT &kp EQUAL
+        //│  F10     │  F11     │  F12     │  ^ (=)   │  :       │   │  +       │  -       │  /       │  .       │  *       │
+            &kp F10    &kp F11    &kp F12   &ht EQUAL CARET &kp COLON  &kp PLUS   &kp MINUS  &kp FSLH   &kp DOT    &kp ASTRK
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
                                   &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
@@ -131,33 +151,16 @@
         nav_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ 5x Layer │Media prev│Media play│Media next│ BRI INC  │   │ PAGE UP  │ HOME     │ UP       │ END      │  BSPC    │
-           &td_QWERTY  &kp C_PREV &kp C_PP   &kp C_NEXT &kp C_BRI_UP   &kp PG_UP  &kp HOME   &kp UARW   &kp END    &kp BSPC
+        //│          │Media prev│Media play│Media next│ BRI INC  │   │ PAGE UP  │ HOME     │ UP       │ END      │  BSPC    │
+            &none      &kp C_PREV &kp C_PP   &kp C_NEXT &kp C_BRI_UP   &kp PG_UP  &kp HOME   &kp UARW   &kp END    &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │ VOL DOWN │ VOL MUTE │ VOL UP   │ BRI DEC  │   │ PAGE DN  │ LEFT     │ DOWN     │ RIGHT    │ DELETE   │
             &none    &kp C_VOL_DN &kp C_MUTE &kp C_VOL_UP &kp C_BRI_DN &kp PG_DN  &kp LARW   &kp DARW   &kp RARW   &kp DEL
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ 5x Layer │          │ Prev Tab │ Next Tab │          │   │SCROLL LCK│ PRINT SC │ PAUSE    │ INSERT   │ CAPS     │
-            &td_SET    &none      &web_prev  &web_next  &none          &kp SLCK   &kp PSCRN  &kp PAUSE_BREAK  &kp INS  &caps_word
+        //│ 5x Layer │SCROLL LCK│ PAUSE    │ INSERT   │ PRINT SC │   │ Backwards│ Prev Tab │ Next Tab │ Forward  │ CAPS     │
+            &td_SET   &kp SLCK  &kp PAUSE_BREAK &kp INS  &kp PSCRN     &web_bck   &web_prev  &web_next  &web_fwd   &caps_word
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
                                   &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
-        //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
-            >;
-        };
-
-        qwerty_layer {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  BSPC    │
-            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp BSPC
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ P        │
-            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,         P)
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
-            &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
-        //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
-                                  &kp SPACE        &ht LGUI ENTER      &ht LSHFT ESC   &to BASE
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
