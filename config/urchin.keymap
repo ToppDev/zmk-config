@@ -15,8 +15,8 @@
 // -----------------
 
 // Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LALT k1  &ht RALT k2  &ht LCTRL k3  &ht LSHFT k4
-#define HRMR(k1,k2,k3,k4) &ht LSHFT k1  &ht LCTRL k2  &ht RALT k3  &ht LALT k4
+#define HRML(k1,k2,k3,k4) &ht RALT k1  &ht LALT k2  &ht LCTRL k3  &ht LSHFT k4
+#define HRMR(k1,k2,k3,k4) &ht LSHFT k1  &ht LCTRL k2  &ht LALT k3  &ht RALT k4
 
 / {
     behaviors {
@@ -100,8 +100,8 @@
         //│  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  ;       │  BSPC    │
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  TAB     │  +       │  =       │  "       │  '       │   │  (       │  )       │  {       │  }       │  |       │ Home row mod?
-            &kp TAB    &kp PLUS   &kp EQUAL  &kp DQT    &kp APOS       &kp LPAR   &kp RPAR   &kp LBRC   &kp RBRC   &kp PIPE
+        //│  TAB     │  +       │  =       │  "       │  '       │   │  (       │  )       │  {       │  }       │  |       │
+            HRML(TAB,      PLUS,      EQUAL,     DQT)   &kp APOS       &kp LPAR   HRMR(RPAR,     LBRC,      RBRC,      PIPE)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  ~       │  -       │  \       │  `       │  €       │   │  [       │  ]       │  _       │  :       │          │
            &kp TILDE   &kp MINUS  &kp BSLH   &kp GRAVE  &euro          &kp LBKT   &kp RBKT   &kp UNDER  &kp COLON  &none
