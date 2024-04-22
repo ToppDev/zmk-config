@@ -22,10 +22,10 @@
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
+            flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <200>;
-            require-prior-idle-ms = <100>;
+            require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
         td_SET: tap_dance_SET {
