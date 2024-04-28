@@ -120,11 +120,11 @@
         //│  !       │  @       │  #       │  $       │  %       │   │  ^       │  &       │  *       │  ;       │  BSPC    │
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp CARET  &kp AMPS   &kp ASTRK  &kp SEMI   &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  TAB     │  +       │  =       │  "       │  '       │   │  (       │  )       │  {       │  }       │  |       │
-            HRML(TAB,      PLUS,      EQUAL,     DQT)   &kp APOS       &kp LPAR   HRMR(RPAR,     LBRC,      RBRC,      PIPE)
+        //│  TAB     │  +       │  =       │  "       │  '       │   │  (       │  )       │  {       │  }       │  <       │
+            HRML(TAB,      PLUS,      EQUAL,     DQT)   &kp APOS       &kp LPAR   HRMR(RPAR,     LBRC,      RBRC,      LT)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  ~       │  -       │  \       │  `       │  €       │   │  [       │  ]       │  _       │  :       │          │
-           &kp TILDE   &kp MINUS  &kp BSLH   &kp GRAVE  &euro          &kp LBKT   &kp RBKT   &kp UNDER  &kp COLON  &none
+        //│  ~       │  -       │  \       │  `       │  |       │   │  [       │  ]       │  _       │  :       │  >       │
+           &kp TILDE   &kp MINUS  &kp BSLH   &kp GRAVE  &kp PIPE       &kp LBKT   &kp RBKT   &kp UNDER  &kp COLON  &kp GT
         //╰──────────┴──────────┼──────────┴──────────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
                                   &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
