@@ -55,17 +55,17 @@ layers:
   - {t: ), h: LSHFT}
   - {t: '{', h: LCTRL}
   - {t: '}', h: LALT}
-  - {t: '|', h: RALT}
+  - {t: '<', h: RALT}
   - '~'
   - '-'
   - \
   - '`'
-  - '€'
+  - '|'
   - '['
   - ']'
   - _
   - ':'
-  - ''
+  - '>'
   - $$mdi:keyboard-space$$
   - {t: $$mdi:keyboard-return$$, h: LGUI}
   - $$mdi:keyboard-esc$$
