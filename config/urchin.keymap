@@ -30,6 +30,10 @@
 
 / {
     behaviors {
+        &lt {
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
