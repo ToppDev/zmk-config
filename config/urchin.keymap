@@ -30,6 +30,15 @@
 
 / {
     behaviors {
+        ht: hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <125>;
+            bindings = <&kp>, <&kp>;
+        };
         htl: hold_tap_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -134,7 +143,7 @@
             &kp Q      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
         //╰──────────┴──────────┼──────────┴─────┬────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
         //                      │              30│             31│   │             32│              33│
-                                  &lt SYM SPACE    &htl LGUI ENTER     &lt NUM ESC     &mo NAV
+                                  &lt SYM SPACE    &ht LGUI ENTER      &lt NUM ESC     &mo NAV
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
@@ -151,7 +160,7 @@
         //│  ~       │  -       │  \       │  `       │  |       │   │  [       │  ]       │  _       │  :       │  >       │
            &kp TILDE   &kp MINUS  &kp BSLH   &kp GRAVE  &kp PIPE       &kp LBKT   &kp RBKT   &kp UNDER  &kp COLON  &kp GT
         //╰──────────┴──────────┼──────────┴─────┬────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
-                                  &kp SPACE        &htl LGUI ENTER     &kp ESC         &none
+                                  &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
@@ -166,9 +175,9 @@
             HRML(N1,       N2,        N3,        N4)    &kp N5         &kp N6     HRMR(N7,       N8,        N9,        N0)
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  F10     │  F11     │  F12     │  ^ (=)   │  :       │   │  +       │  -       │  /       │  .       │  *       │
-            &kp F10    &kp F11    &kp F12   &htl EQUAL CARET &kp COLON &kp PLUS   &kp MINUS  &kp FSLH   &kp DOT    &kp ASTRK
+            &kp F10    &kp F11    &kp F12   &ht EQUAL CARET &kp COLON  &kp PLUS   &kp MINUS  &kp FSLH   &kp DOT    &kp ASTRK
         //╰──────────┴──────────┼──────────┴─────┬────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
-                                  &kp SPACE        &htl LGUI ENTER     &kp ESC         &none
+                                  &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
@@ -185,7 +194,7 @@
         //│ 5x Layer │SCROLL LCK│ PAUSE    │ INSERT   │ PRINT SC │   │ Backwards│ Prev Tab │ Next Tab │ Forward  │ CAPS     │
             &td_SET   &kp SLCK  &kp PAUSE_BREAK &kp INS  &kp PSCRN     &web_bck   &web_prev  &web_next  &web_fwd   &caps_word
         //╰──────────┴──────────┼──────────┴─────┬────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
-                                  &kp SPACE        &htl LGUI ENTER     &kp ESC         &none
+                                  &kp SPACE        &ht LGUI ENTER      &kp ESC         &none
         //                      ╰────────────────┴───────────────╯   ╰───────────────┴────────────────╯
             >;
         };
