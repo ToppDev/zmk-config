@@ -71,6 +71,7 @@
             #binding-cells = <0>;
             bindings = <&kp RCTL>, <&kp E>;
             mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
         };
         htr_e: hold_tap_right_e {
             compatible = "zmk,behavior-hold-tap";
