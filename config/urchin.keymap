@@ -30,7 +30,7 @@
 };
 
 // e.g. MODKEY = RCTRL, TAPKEY = E, MODIFIER = MOD_LCTL
-#define htr(MODKEY, TAPKEY)                                                   \
+#define htr_(MODKEY, TAPKEY)                                                   \
         MODKEY_TAPKEY: MODKEY_or_TAPKEY_if_already_MODKEY {                   \
             compatible = "zmk,behavior-mod-morph";                            \
             #binding-cells = <0>;                                             \
@@ -72,7 +72,7 @@
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release; // delay positional check until key-release
         };
-        htr(RCTRL, E, MOD_LCTL)
+        htr_(RCTRL, E, MOD_LCTL)
         htr: hold_tap_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
