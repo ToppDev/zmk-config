@@ -15,7 +15,7 @@
 
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) &htl RALT k1  &htl LALT k2  &htl LCTRL k3  &htl LSHFT k4
-#define HRMR(k1,k2,k3,k4) &htr LSHFT k1  &htr LCTRL k2  &htr LALT k3  &htr RALT k4
+#define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &htr_e RCTRL k2  &htr LALT k3  &htr RALT k4
 
 // https://zmk.dev/blog#simplifying-position-based-behaviors
 //    ╭────────────────┬────────────────╮
@@ -63,6 +63,23 @@
             quick-tap-ms = <175>; // repeat on tap-into-hold
             require-prior-idle-ms = <150>;
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <KEYS_L THUMBS>;
+            hold-trigger-on-release; // delay positional check until key-release
+        };
+        morph_BC: morph_BC {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RCTL>, <&kp E>;
+            mods = <(MOD_LCTL)>;
+        };
+        htr_e: hold_tap_right_e {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>; // repeat on tap-into-hold
+            require-prior-idle-ms = <150>;
+            bindings = <&morph_BC>, <&kp E>;
             hold-trigger-key-positions = <KEYS_L THUMBS>;
             hold-trigger-on-release; // delay positional check until key-release
         };
