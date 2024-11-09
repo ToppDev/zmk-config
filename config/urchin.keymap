@@ -29,6 +29,7 @@
     quick-tap-ms = <200>;
 };
 
+// The mod-morph allows the tapkey to repeat if MODIFIER is held (other side)
 // e.g. MODKEY = RCTRL, TAPKEY = E, MODIFIER = MOD_LCTL
 #define htr_(MODKEY, TAPKEY, MODIFIER)                                        \
         MODKEY_TAPKEY: MODKEY_or_TAPKEY_if_already_MODKEY {                   \
@@ -153,7 +154,7 @@
 
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) &htl RALT k1  &htl LALT k2  &htl LCTRL k3  &htl LSHFT k4
-#define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &RCTRL_E RCTRL k2  &htr LALT k3  &htr RALT k4
+#define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &htr_E RCTRL k2  &htr LALT k3  &htr RALT k4
 
     keymap {
         compatible = "zmk,keymap";
