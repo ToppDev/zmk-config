@@ -46,7 +46,7 @@
             tapping-term-ms = <280>;                                          \
             quick-tap-ms = <175>;                                             \
             require-prior-idle-ms = <150>;                                    \
-            bindings = <&MODMORPHNAME>, <&kp TAPKEY>;                         \
+            bindings = <&MODMORPHNAME>, <&kp>;                                \
             hold-trigger-key-positions = <KEYS_L THUMBS>;                     \
             hold-trigger-on-release;                                          \
         };
@@ -172,7 +172,7 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA  &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I     10│  S     11│  R     12│  T     13│  G     14│   │  P     15│  N     16│  E     17│  A     18│  O     19│
-            HRML(I,        S,         R,         T)     &kp G          &kp P      rshft_n,   rctrl_e,   lalt_a,    ralt_o
+            HRML(I,        S,         R,         T)     &kp G          &kp P      rshft_n    rctrl_e    lalt_a     ralt_o
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Q     20│  V     21│  W     22│  D     23│  J     24│   │  B     25│  H     26│ / ?    27│ . >    28│  X     29│
             &kp Q      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
