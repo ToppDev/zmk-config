@@ -44,11 +44,11 @@
             #binding-cells = <2>;                                             \
             flavor = "balanced";                                              \
             tapping-term-ms = <280>;                                          \
-            quick-tap-ms = <175>; // repeat on tap-into-hold                  \
+            quick-tap-ms = <175>;                                             \
             require-prior-idle-ms = <150>;                                    \
             bindings = <&MODKEY_TAPKEY>, <&kp>;                               \
             hold-trigger-key-positions = <KEYS_L THUMBS>;                     \
-            hold-trigger-on-release; // positional check when key-release     \
+            hold-trigger-on-release;                                          \
         };
 
 / {
@@ -73,25 +73,25 @@
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release; // delay positional check until key-release
         };
-        // htr_(RCTRL, E, MOD_LCTL)
-        RCTRL_E: RCTRL_or_E_if_already_RCTRL {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp RCTRL>, <&kp E>;
-            mods = <(MOD_LCTL)>;
-            keep-mods = <(MOD_LCTL)>;
-        };
-        htr_E: hold_tap_right_E {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>; // repeat on tap-into-hold
-            require-prior-idle-ms = <150>;
-            bindings = <&RCTRL_E>, <&kp>;
-            hold-trigger-key-positions = <KEYS_L THUMBS>;
-            hold-trigger-on-release; // positional check when key-release
-        };
+        htr_(RCTRL, E, MOD_LCTL)
+        // RCTRL_E: RCTRL_or_E_if_already_RCTRL {
+        //     compatible = "zmk,behavior-mod-morph";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp RCTRL>, <&kp E>;
+        //     mods = <(MOD_LCTL)>;
+        //     keep-mods = <(MOD_LCTL)>;
+        // };
+        // htr_E: hold_tap_right_E {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>; // repeat on tap-into-hold
+        //     require-prior-idle-ms = <150>;
+        //     bindings = <&RCTRL_E>, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_L THUMBS>;
+        //     hold-trigger-on-release; // positional check when key-release
+        // };
         htr: hold_tap_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
