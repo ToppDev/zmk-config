@@ -63,7 +63,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        mm_ht(RALT_I,  htr_I, RALT,  I, MOD_RALT, KEYS_R)
+        mm_ht(RALT_I,  htr_I, RALT,  I, MOD_LSFT|MOD_LCTL|MOD_LALT|MOD_RALT, KEYS_R)
         mm_ht(LALT_S,  htr_S, LALT,  S, MOD_LALT, KEYS_R)
         mm_ht(LCTRL_R, htr_R, LCTRL, R, MOD_RCTL, KEYS_R)
         mm_ht(LSHFT_T, htr_T, LSHFT, T, MOD_RSFT, KEYS_R)
