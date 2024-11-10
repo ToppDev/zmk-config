@@ -30,8 +30,8 @@
 };
 
 // The mod-morph allows the tapkey to repeat if MODIFIER is held (other side)
-// e.g. htr_(htr_E, RCTRL_E, RCTRL, E, MOD_LCTL)
-#define htr_(MODNAME, MODMORPHNAME, MODKEY, TAPKEY, MODIFIER)                 \
+// e.g. mm_ht(RCTRL_E, htr_E, RCTRL, E, MOD_LCTL)
+#define mm_ht(MODMORPHNAME, MODNAME, MODKEY, TAPKEY, MODIFIER, TRIGGERKEYS)   \
         MODNAME: MODNAME {                                                    \
             compatible = "zmk,behavior-hold-tap";                             \
             #binding-cells = <2>;                                             \
@@ -40,7 +40,7 @@
             quick-tap-ms = <175>;                                             \
             require-prior-idle-ms = <150>;                                    \
             bindings = <&kp>, <&kp>;                                          \
-            hold-trigger-key-positions = <KEYS_L THUMBS>;                     \
+            hold-trigger-key-positions = <TRIGGERKEYS THUMBS>;                \
             hold-trigger-on-release;                                          \
         };                                                                    \
         MODMORPHNAME: MODMORPHNAME {                                          \
@@ -73,10 +73,17 @@
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release; // delay positional check until key-release
         };
-        htr_(htr_N, RSHFT_N, RSHFT, N, MOD_LSFT)
-        htr_(htr_E, RCTRL_E, RCTRL, E, MOD_LCTL)
-        htr_(htr_A, LALT_A,  LALT,  A, MOD_LALT)
-        htr_(htr_O, RALT_O,  RALT,  E, MOD_RALT)
+        mm_ht(RALT_I,  htr_I, RALT,  I, MOD_RALT, KEYS_R)
+        mm_ht(LALT_S,  htr_S, LALT,  S, MOD_LALT, KEYS_R)
+        mm_ht(LCTRL_R, htr_R, LCTRL, R, MOD_RCTL, KEYS_R)
+        mm_ht(LSHFT_T, htr_T, LSHFT, T, MOD_RSFT, KEYS_R)
+        mm_ht(RSHFT_N, htr_N, RSHFT, N, MOD_LSFT, KEYS_L)
+        mm_ht(RCTRL_E, htr_E, RCTRL, E, MOD_LCTL, KEYS_L)
+        mm_ht(LALT_A,  htr_A, LALT,  A, MOD_LALT, KEYS_L)
+        mm_ht(RALT_O,  htr_O, RALT,  O, MOD_RALT, KEYS_L)
+            // HRML(I,        S,         R,         T)     &kp G          &kp P      &RSHFT_N   &RCTRL_E   &LALT_A    &RALT_O
+            // HRML(TAB,      PLUS,      EQUAL,     DQT)   &kp APOS       &kp LPAR   HRMR(RPAR,     LBRC,      RBRC,      LT)
+            // HRML(N1,       N2,        N3,        N4)    &kp N5         &kp N6     HRMR(N7,       N8,        N9,        N0)
         htr: hold_tap_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -168,7 +175,7 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA  &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I     10│  S     11│  R     12│  T     13│  G     14│   │  P     15│  N     16│  E     17│  A     18│  O     19│
-            HRML(I,        S,         R,         T)     &kp G          &kp P      &RSHFT_N   &RCTRL_E   &LALT_A    &RALT_O
+            &RALT_I    &LALT_S    &LCTRL_R   &LSHFT_T   &kp G          &kp P      &RSHFT_N   &RCTRL_E   &LALT_A    &RALT_O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Q     20│  V     21│  W     22│  D     23│  J     24│   │  B     25│  H     26│ / ?    27│ . >    28│  X     29│
             &kp Q      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
