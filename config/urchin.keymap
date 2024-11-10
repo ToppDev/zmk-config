@@ -46,7 +46,7 @@
             tapping-term-ms = <280>;                                          \
             quick-tap-ms = <175>;                                             \
             require-prior-idle-ms = <150>;                                    \
-            bindings = <&MODMORPHNAME>, <&kp>;                                \
+            bindings = <&MODMORPHNAME>, <&kp TAPKEY>;                         \
             hold-trigger-key-positions = <KEYS_L THUMBS>;                     \
             hold-trigger-on-release;                                          \
         };
@@ -73,25 +73,10 @@
             hold-trigger-key-positions = <KEYS_R THUMBS>;
             hold-trigger-on-release; // delay positional check until key-release
         };
+        htr_(htr_N, RSHFT_N, RSHFT, N, MOD_LSFT)
         htr_(htr_E, RCTRL_E, RCTRL, E, MOD_LCTL)
-        // RCTRL_el: RCTRL_or_E_if_already_RCTRL {
-        //     compatible = "zmk,behavior-mod-morph";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp RCTRL>, <&kp E>;
-        //     mods = <(MOD_LCTL)>;
-        //     keep-mods = <(MOD_LCTL)>;
-        // };
-        // htr_el: hold_tap_right_E {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     flavor = "balanced";
-        //     tapping-term-ms = <280>;
-        //     quick-tap-ms = <175>; // repeat on tap-into-hold
-        //     require-prior-idle-ms = <150>;
-        //     bindings = <&RCTRL_E>, <&kp>;
-        //     hold-trigger-key-positions = <KEYS_L THUMBS>;
-        //     hold-trigger-on-release; // positional check when key-release
-        // };
+        htr_(htr_A, LALT_A,  LALT,  A, MOD_LALT)
+        htr_(htr_O, RALT_O,  RALT,  E, MOD_RALT)
         htr: hold_tap_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -172,7 +157,11 @@
 
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) &htl RALT k1  &htl LALT k2  &htl LCTRL k3  &htl LSHFT k4
-#define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &htr_E RCTRL k2  &htr LALT k3  &htr RALT k4
+#define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &htr RCTRL k2  &htr LALT k3  &htr RALT k4
+#define rshft_n &htr_N 0 0
+#define rctrl_e &htr_E 0 0
+#define lalt_a &htr_A 0 0
+#define ralt_o &htr_O 0 0
 
     keymap {
         compatible = "zmk,keymap";
@@ -183,7 +172,7 @@
             &kp Y      &kp C      &kp L      &kp M      &kp K          &kp Z      &kp F      &kp U      &kp COMMA  &kp BSPC
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  I     10│  S     11│  R     12│  T     13│  G     14│   │  P     15│  N     16│  E     17│  A     18│  O     19│
-            HRML(I,        S,         R,         T)     &kp G          &kp P      HRMR(N,        E,         A,         O)
+            HRML(I,        S,         R,         T)     &kp G          &kp P      rshft_n,   rctrl_e,   lalt_a,    ralt_o
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Q     20│  V     21│  W     22│  D     23│  J     24│   │  B     25│  H     26│ / ?    27│ . >    28│  X     29│
             &kp Q      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
