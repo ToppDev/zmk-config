@@ -158,10 +158,10 @@
 // Home row mods macro
 #define HRML(k1,k2,k3,k4) &htl RALT k1  &htl LALT k2  &htl LCTRL k3  &htl LSHFT k4
 #define HRMR(k1,k2,k3,k4) &htr RSHFT k1  &htr RCTRL k2  &htr LALT k3  &htr RALT k4
-#define rshft_n &htr_N 0 0
-#define rctrl_e &htr_E 0 0
-#define lalt_a &htr_A 0 0
-#define ralt_o &htr_O 0 0
+#define rshft_n &htr_N RSHFT N
+#define rctrl_e &htr_E RCTRL E
+#define lalt_a &htr_A LALT A
+#define ralt_o &htr_O RALT O
 
     keymap {
         compatible = "zmk,keymap";
