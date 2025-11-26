@@ -168,8 +168,8 @@
         //│  I     10│  S     11│  R     12│  T     13│  G     14│   │  P     15│  N     16│  E     17│  A     18│  O     19│
             &RALT_I    &LALT_S    &LCTRL_R   &LSHFT_T   &kp G          &kp P      &RSHFT_N   &RCTRL_E   &LALT_A    &RALT_O
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Q     20│  V     21│  W     22│  D     23│  J     24│   │  B     25│  H     26│ / ?    27│ . >    28│  X     29│
-            &kp Q      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp X
+        //│  X     20│  V     21│  W     22│  D     23│  J     24│   │  B     25│  H     26│ / ?    27│ . >    28│  Q     29│
+            &kp X      &kp V      &kp W      &kp D      &kp J          &kp B      &kp H      &kp FSLH   &kp DOT    &kp Q
         //╰──────────┴──────────┼──────────┴─────┬────┴──────────┤   ├──────────┴────┬─────┴──────────┼──────────┴──────────╯
         //                      │              30│             31│   │             32│              33│
                                   &lt SYM SPACE    &ht LGUI ENTER      &lt NUM ESC     &mo NAV
